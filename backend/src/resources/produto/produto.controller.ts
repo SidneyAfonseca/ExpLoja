@@ -10,6 +10,16 @@ import {
 import { CreateProdutoDto } from "./produto.types";
 
 const index = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Retorna Todos os Produtos.'
+ #swagger.parameters['body'] = {
+ in: 'body',
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ */
   try {
     const produtos = await getAllProdutos();
     res.status(200).json(produtos);
@@ -19,6 +29,16 @@ const index = async (req: Request, res: Response) => {
 };
 
 const create = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'Adiciona um novo produto na base.'
+ #swagger.parameters['body'] = {
+ in: 'body',
+ schema: { $ref: '#/definitions/CreateProdutoDto' }
+ }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ */
   const produto = req.body as CreateProdutoDto;
   try {
     if (await buscaProdutoPorNome(produto.nome))
@@ -31,6 +51,13 @@ const create = async (req: Request, res: Response) => {
 };
 
 const read = async (req: Request, res: Response) => {
+  /*
+ #swagger.summary = 'retorna um  produto da base.'
+ #swagger.parameters['id'] = { description ="ID Produto" }
+ #swagger.responses[200] = {
+ schema: { $ref: '#/definitions/Produto' }
+ }
+ */
   const { id } = req.params;
   try {
     const prod = await getProduto(id);
