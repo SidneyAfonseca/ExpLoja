@@ -1,6 +1,7 @@
 # Loja Virtual - Web Academy
 
 Sistema de loja virtual com Backend (REST Api) desenvolvida em Express e Frontend em React. O repositório tem um diretório para o backend e outro para o frontend, e os dois sistemas são inicializados automaticamente com o docker compose (instruções abaixo). Além dos containers do backend e frontend, o docker compose também cria containers para o banco de dados de desenvolvimento, banco de dados de teste, além do phpmyadmin. Para rodar a aplicação, execute os seguintes comandos:
+.env do backend add HOST = localhost
 
 ```
 $ git clone https://github.com/dbfernandes/expLoja
