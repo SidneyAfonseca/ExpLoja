@@ -26,6 +26,18 @@ const doc = {
       createdAt: "2023-01-01",
       updatedAt: "2023-01-01",
     },
+    AddProdutoCarrinhoMsg: {
+      msg: "Item adicionado ao carrinho",
+    },
+    FinalizaCompraMsg: {
+      msg: "Compra feita com sucesso",
+    },
+    ProdutosCarrinhoList: [
+      {
+        id: "06193fb5-b17b-428b-8bbe-563709e2c9f1",
+        quantidade: 10,
+      },
+    ],
   },
 };
 const outputFile = "./swagger-output.json";

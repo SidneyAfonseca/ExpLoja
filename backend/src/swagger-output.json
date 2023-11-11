@@ -379,6 +379,79 @@
           }
         }
       }
+    },
+    "/v1/compra/": {
+      "get": {
+        "tags": [
+          "Compra"
+        ],
+        "summary": "Recupera lista de produtos do carrinho.",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProdutosCarrinhoList"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Compra"
+        ],
+        "summary": "Finaliza a compra.",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FinalizaCompraMsg"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/v1/compra/{id}/{quantidade}": {
+      "post": {
+        "tags": [
+          "Compra"
+        ],
+        "summary": "Adiciona produto no carrinho.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do produto desejado"
+          },
+          {
+            "name": "quantidade",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AddProdutoCarrinhoMsg"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -441,6 +514,40 @@
         "updatedAt": {
           "type": "string",
           "example": "2023-01-01"
+        }
+      }
+    },
+    "AddProdutoCarrinhoMsg": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "example": "Item adicionado ao carrinho"
+        }
+      }
+    },
+    "FinalizaCompraMsg": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "example": "Compra feita com sucesso"
+        }
+      }
+    },
+    "ProdutosCarrinhoList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "06193fb5-b17b-428b-8bbe-563709e2c9f1"
+          },
+          "quantidade": {
+            "type": "number",
+            "example": 10
+          }
         }
       }
     }

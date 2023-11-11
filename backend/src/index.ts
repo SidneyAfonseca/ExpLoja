@@ -10,11 +10,13 @@ import session from "express-session";
 import { v4 as uuidv4 } from "uuid";
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./swagger-output.json";
+import { ProdutoCarrinho } from "./resources/compra/compra.types";
 
 declare module "express-session" {
   interface SessionData {
     uid: string;
     tipoUsuario: string;
+    carrinhoCompra: ProdutoCarrinho[];
   }
 }
 
